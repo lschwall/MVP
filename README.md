@@ -24,9 +24,9 @@ ___
 "Why be a dud, when you can be a milk dud."
 ___
 ### REVIEWS
-"*this*burps*adfadsf* <br>
+"*this* burps *adfadsf* <br>
 *is a* <br>
-*great app*stumbles*asdfasF*"
+*great app* stumbles *asdfasF*"
 ___
 ### A SIMPLE REQUEST
-Wrap it up and give pointers where the reader should go next.
+If you have enjoyed our app, please share with your friends!
