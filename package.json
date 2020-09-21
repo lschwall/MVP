@@ -1,0 +1,12 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "Looking to impress your friends with a drink, let the mixologist pocketbook help you! ___",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
