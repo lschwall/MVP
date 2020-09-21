@@ -12,15 +12,15 @@ Describe the problem your product solves.
 ___
 ## HOW DOES THIS APP SOLVE THE ISSUE?
 Describe how your product elegantly solves the problem.
-__
+___
 ## HOW TO GET STARTED
 Describe how easy it is to get started.
-__
+___
 ### A NOTE FROM OUR CEO
 A quote from a spokesperson in your company.
-__
+___
 ### REVIEWS
 Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-__
+___
 ### A SIMPLE REQUEST
 Wrap it up and give pointers where the reader should go next.
