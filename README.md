@@ -3,7 +3,7 @@
 Looking to impress your friends with a drink, let the mixologist pocketbook help you!
 ___
 
-Sub-Heading
+## ABOUT
 
 
 This app is for anyone at home looking to show their guest a good time. By providing recipes and accurate mixing measurements, anyone can make their favorite cocktail!
