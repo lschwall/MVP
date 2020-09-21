@@ -12,7 +12,7 @@ app.listen(PORT, () => {
   //   requests   //
  //////////////////
 app.get('/', (req, res) => {
-    res.send('THE SHIT IS BIG DUMB')
+    res.send('WHO WANTS TO GET FUCKED UP')
 })
 
     //post to server
