@@ -1,29 +1,26 @@
-# The mixologist pocketbook
-
+# The Mixologist Pocketbook
 Looking to impress your friends with a drink, let the mixologist pocketbook help you!
 ___
-
-## ABOUT
-
-
+## PURPOSE
 This app is for anyone at home looking to show their guest a good time. By providing recipes and accurate mixing measurements, anyone can make their favorite cocktail!
-
-
-Summary
+___
+## USAGE
 Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
-
-Problem
+___
+## WHERE DOES THE PROBLEM LIE?
 Describe the problem your product solves.
-
-
-Solution
+___
+## HOW DOES THIS APP SOLVE THE ISSUE?
 Describe how your product elegantly solves the problem.
-Quote from You
-A quote from a spokesperson in your company.
-How to Get Started
+__
+## HOW TO GET STARTED
 Describe how easy it is to get started.
-Customer Quote
+__
+### A NOTE FROM OUR CEO
+A quote from a spokesperson in your company.
+__
+### REVIEWS
 Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-Closing and Call to Action
+__
+### A SIMPLE REQUEST
 Wrap it up and give pointers where the reader should go next.
