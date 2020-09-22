@@ -1,11 +1,19 @@
 import React from 'react';
 
-const Results = (props) => (
+const Result = ({ movie }, props) => (
     <div className='result'>
-        <h4>Most Recently added Movie:</h4>
-        <div>"movie name shows here"</div>
+        <h4>Search Movie Details:</h4>
+        <div id ='movie'>
+            <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
+            <h4>{ movie.title }</h4>
+            <span>{ movie.overview }</span>
+        </div>
+        <div id='addButton'>
+            <span>
+                <button onClick={() => {props.addMovie()}}>Add to Drawer</button>
+            </span>
+        </div>
     </div>
-
 );
 
-export default Results;
+export default Result;

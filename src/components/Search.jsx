@@ -5,9 +5,10 @@ const Search = (props) => (
         <input type="text" onChange={(event) => {
           props.searchHandler(event)}} />
         <button onClick = {() => {
-          props.movieSearch()
+          props.movieSearch();
+          
         }}>
-          Add to Drawer
+          Search for Movie
         </button>
     </div>
 );
