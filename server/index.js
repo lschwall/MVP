@@ -8,11 +8,10 @@ const { db } = require('../server/db');
 const Movie = require('./db')
 
 app.use(express.static('dist'));
-
-
-
 app.use(bodyparser.urlencoded({extended: true}))
 
+
+//these take care of most recent movies
 
 app.get('/movies', (req, res) => {
     Movie.find()
