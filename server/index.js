@@ -40,6 +40,19 @@ app.post('/movies',(req, res) => {
    
 })
 
+app.delete('/movies', (req, res) => {
+    console.log(req.query, '==== QUERY')
+    let {movieName} = req.query;
+    Movie.deleteOne({title: movieName})
+      .then( () => {
+        res.sendStatus(200);
+      })
+      .catch(err => {
+        console.error(err);
+        res.sendStatus(500)
+      })
+  })
+
 
 // NOTHING BELOW THIS LINE
 

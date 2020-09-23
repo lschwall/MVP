@@ -17,7 +17,7 @@ class App extends React.Component{
         this.onSearch = this.onSearch.bind(this);
         this.movieSearch = this.movieSearch.bind(this);
         this.addMovie = this.addMovie.bind(this);
-        this.onDelete = this.onDelete.bind(this);
+        this.deleteMovie = this.deleteMovie.bind(this);
     }
 
 /*
@@ -81,8 +81,12 @@ axios.get from API
     }
 
 
-    onDelete(){
-
+    deleteMovie(movieTitle){
+        axios.delete(`http://localhost:8080/movies?movieTitle=${movieTitle}`)
+            .then(() => {
+                axios.get('http://localhost:8080/movies')
+                    .then(results => this.setState({library: results.data}))
+            })
     }
 
     render(){
@@ -97,7 +101,7 @@ axios.get from API
                     <Result movie={movie} addMovie={this.addMovie} />
                 </div>
                 <div id="movie-list">
-                    <MovieEntries movies={library} />
+                    <MovieEntries movies={library} deleteMovie={this.deleteMovie}/>
                 </div>
             </div>
         )

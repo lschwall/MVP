@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieEntry = ({ movie }) => (
+const MovieEntry = ({ movie, deleteMovie }) => (
 
     <div className="movie-container">
         <div id="movie-title">
@@ -10,7 +10,7 @@ const MovieEntry = ({ movie }) => (
         Popularity: { movie.vote_average }
         </div>
         <div id="button-div">
-            <button>Remove from Drawer</button>
+            <button onClick={() => {deleteMovie(movie.title)}}>Remove from Drawer</button>
         </div>
         <br />
     </div>
