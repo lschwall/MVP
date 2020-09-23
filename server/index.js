@@ -8,10 +8,11 @@ const { db } = require('../server/db');
 const Movie = require('./db')
 
 app.use(express.static('dist'));
-app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.json())
 
 
 //these take care of most recent movies
+
 
 app.get('/movies', (req, res) => {
     Movie.find()
@@ -25,36 +26,18 @@ app.get('/movies', (req, res) => {
     })
 })
 
-
 app.post('/movies',(req, res) => {
-    const testMovie = { 
-        id: 1214,
-        original_title: 'FAST 7',
-        title: 'FAST 7',
-        vote_average: 1.3,
-        personal_rating: 0.4
-    }
-
-    Movie.find(testMovie)
-        .then(result => {
-            if(!result.length){
-                console.log('now saving movie')
-                new Movie(testMovie).save()
-                    .then((savedMovie) => {
-                        res.status(200)
-                        res.send(savedMovie)
-                        res.send('MOVIE SAVED!')
-                        return
-                    })
-            }else{
-                console.log('MOVIE ALREADY ADDED')
-                res.status(302)
-                res.send('MOVIE ALREADY IN DATABASE, PLEASE SEARCH AGAIN')
-            }
+    console.log(req.body.title)
+    new Movie(req.body).save()
+        .then((savedMovie) => {
+            res.status(200)
+            res.send(savedMovie)
         })
-        .catch((err) => {
-            console.log('ERROR IN SAVING NEW TITLE', err)
+        .catch(() => {
+            res.status(404)
+            console.log('MOVIE ALREADY IN DRAWER')
         })
+   
 })
 
 

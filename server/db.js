@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const DATABASE = 'blizzard';
+const DATABASE = 'drawer';
 
 mongoose.connect(`mongodb://localhost/${DATABASE}`, {
     useNewUrlParser:true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    createIndexes: true
 })
     .then(() => {
         console.log('CONNECTED TO DATABASE')
@@ -15,7 +16,7 @@ mongoose.connect(`mongodb://localhost/${DATABASE}`, {
 const newMovie = new mongoose.Schema({
    id: Number, 
    original_title: String, 
-   title: String,
+   title: {type: String, unique: true},
    vote_average: Number,
    personal_rating: Number
 })

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Result = ({ movie }, props) => (
+const Result = ({ movie, addMovie }) => (
     <div className='result'>
         <h4>Search Movie Details:</h4>
         <div id ='movie'>
@@ -10,7 +10,7 @@ const Result = ({ movie }, props) => (
         </div>
         <div id='addButton'>
             <span>
-                <button onClick={() => {props.addMovie()}}>Add to Drawer</button>
+                <button onClick={() => {addMovie()}}>Add to Drawer</button>
             </span>
         </div>
     </div>

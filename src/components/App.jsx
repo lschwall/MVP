@@ -1,6 +1,7 @@
 import React from "react"; // <=  react is undefined
-import Search from './Search'
+import Search from './Search';
 import Result from './Result';
+import MovieEntries from './MovieEntry';
 import axios from 'axios';
 
 class App extends React.Component{
@@ -10,6 +11,7 @@ class App extends React.Component{
             movieData: [],
             searchText: '',
             movie: {},
+            library: []
         }
         this.searchHandler = this.searchHandler.bind(this);
         this.movieSearch = this.movieSearch.bind(this);
@@ -22,6 +24,15 @@ axios.get from API
     then
         post that information to the endpoint in the server /movies
 */
+    componentDidMount(){
+            axios.get('/movies')
+                .then(({ data }) => {
+                    console.log('DATA',data)
+                    this.setState = {
+                        library: data
+                    }
+                })
+            }
 
     movieSearch(){
         let { searchText } = this.state;
@@ -45,12 +56,18 @@ axios.get from API
                 axios.get('http://localhost:8080/movies')
                     .then(({ data }) => {
                         console.log(`Successfully posted${data} to the Drawer`)
-                        this.setState({
-                            movieData: data,
-                            movie: {}
+                    axios.get('/movies')
+                        .then((movieData) => {
+                            this.setState({
+                                movieData: data,
+                                movie: {},
+                                library: movieData.data
+                            })
                         })
+
                     })
             })
+        
             .catch(err => {console.log('COULD NOT POST', err)})
     }
 
