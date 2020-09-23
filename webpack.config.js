@@ -8,9 +8,13 @@ module.exports = {
   entry: "./src/index.js",
   output: { // NEW
     path: path.join(__dirname, 'dist'),
-    filename: "[name].js"
+    filename: "[name].js",
+    publicPath: '/'
   }, // NEW Ends
   plugins: [htmlPlugin],
+  devServer: {
+    historyApiFallback: true
+ },
   module: {
     rules: [
       {
@@ -18,9 +22,16 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
-        },
-
-      }
+        }
+      },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+       },
+       {
+          test: /\.(png|j?g|svg|gif)?$/,
+          use: 'file-loader'
+       }
     ]
   },
   resolve: {

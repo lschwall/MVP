@@ -10,7 +10,6 @@ INDEX IS A FUNCTIONAL COMPONENT THAT RETURNS A REACT ELEMENT.
 import React from 'react'; // => this gives minified err #130
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import './styles/styles.scss'
 
 
 ReactDOM.render(<App />, document.getElementById('root'))
