@@ -1,16 +1,12 @@
 import React from 'react';
 
-const Search = (props) => (
+const Search = ({ onSearch, movieSearch }) => (
     <div className='search-bar'>
-        <input type="text" onChange={(event) => {
-          props.searchHandler(event)}} />
-        <button onClick = {() => {
-          props.movieSearch();
-          
-        }}>
+        <input type="text" onChange = {(event) => {onSearch(event)}} />
+        <button onClick = {() => {movieSearch()}}>
           Search for Movie
         </button>
     </div>
-);
+)
 
 export default Search;

@@ -18,6 +18,8 @@ const newMovie = new mongoose.Schema({
    original_title: String, 
    title: {type: String, unique: true},
    vote_average: Number,
+   poster_path: String,
+   overview: String,
    personal_rating: Number
 })
 
