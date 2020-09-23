@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Result = ({ movie, addMovie }) => (
+const Result = ({ movie, addMovie, onRating }) => (
     <div className='result'>
         <h4>Search Movie Details:</h4>
         <div id ='movie'>

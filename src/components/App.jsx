@@ -10,14 +10,17 @@ class App extends React.Component{
         super(props)
         this.state = {
             movieData: [],
-            searchText: '',
+            searchText: null,
             movie: {},
-            library: []
+            library: [],
+            rating: null
         }
         this.onSearch = this.onSearch.bind(this);
         this.movieSearch = this.movieSearch.bind(this);
         this.addMovie = this.addMovie.bind(this);
         this.deleteMovie = this.deleteMovie.bind(this);
+        this.onRating = this.onRating.bind(this);
+        this.submitRating = this.submitRating.bind(this);
     }
 
 /*
@@ -80,6 +83,27 @@ axios.get from API
         })
     }
 
+    onRating(event){
+        this.setState({
+            rating: event.target.value
+        })
+    }
+
+    submitRating(movieTitle){
+        let { rating } = this.state //grabs rating from state
+        const options = {
+            title: movieTitle,
+            personal_rating: rating //passes rating as parameter
+        }
+        axios.post(`http://localhost:8080/updateMovie`, options)
+            .then(() => {
+                axios.get(`http://localhost:8080/movies`)
+                    .then(results => this.setState({
+                        library : results.data
+                    }))
+            })
+    }
+
 
     deleteMovie(movieTitle){
         axios.delete(`http://localhost:8080/movies?movieTitle=${movieTitle}`)
@@ -90,7 +114,7 @@ axios.get from API
     }
 
     render(){
-        const { movie, library } = this.state;
+        const { movie, library, } = this.state;
         return(
             <div className='container'>
                 <div id='title'>
@@ -98,10 +122,10 @@ axios.get from API
                 </div>
                 <div id='search'><Search onSearch={this.onSearch} movieSearch={this.movieSearch} /></div>
                 <div>
-                    <Result movie={movie} addMovie={this.addMovie} />
+                    <Result movie={movie} addMovie={this.addMovie}  />
                 </div>
                 <div id="movie-list">
-                    <MovieEntries movies={library} deleteMovie={this.deleteMovie}/>
+                    <MovieEntries movies={library} deleteMovie={this.deleteMovie} onRating={this.onRating} submitRating={this.submitRating}/>
                 </div>
             </div>
         )

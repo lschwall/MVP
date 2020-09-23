@@ -42,8 +42,8 @@ app.post('/movies',(req, res) => {
 
 app.delete('/movies', (req, res) => {
     console.log(req.query, '==== QUERY')
-    let {movieName} = req.query;
-    Movie.deleteOne({title: movieName})
+    let {movieTitle} = req.query;
+    Movie.deleteOne({title: movieTitle})
       .then( () => {
         res.sendStatus(200);
       })
@@ -53,6 +53,15 @@ app.delete('/movies', (req, res) => {
       })
   })
 
+  app.post('/updateMovie', (req, res) => {
+    let { title, personal_rating } = req.body;
+    console.log('BODY',req.body)
+    Movie.findOneAndUpdate({title: title}, {personal_rating: personal_rating})
+        .then(updateResult => {
+            console.log(updateResult)
+            res.status(200).send('Rating Updated')
+        })
+  })
 
 // NOTHING BELOW THIS LINE
 

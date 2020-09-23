@@ -20,7 +20,7 @@ const newMovie = new mongoose.Schema({
    vote_average: Number,
    poster_path: String,
    overview: String,
-   personal_rating: Number
+   personal_rating: String
 })
 
 const Movie = mongoose.model('Movie', newMovie)
