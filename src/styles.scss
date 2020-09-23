@@ -1,0 +1,89 @@
+body{
+    background-color: #f1f3f8;
+    color: #8d93ab;
+    font-family: 'Epilogue', sans-serif;
+    text-align: center;
+
+    .titleContainer{
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        background-color: #393b44;
+        #title{
+            margin: auto;
+            font-size: 200%;
+        }
+    }
+
+    #search{
+        margin: auto;
+        .search-bar{
+            padding: 10px;
+            .inputtext{
+                border: none;
+                display: inline-block;
+                text-align: center;
+            }
+            .inputtext:focus{
+                outline:none;
+            }
+            .searchBtn{
+                font-size: 1.5rem;
+                border: none;
+                background-color: #f1f3f8;
+                color: #8d93ab;
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+            .searchBtn:focus{
+                outline: none; 
+            }
+            .searchBtn:hover{
+                background-color: #393b44;
+                border-radius: 10px;
+                color: #f1f3f8;
+            }
+        }
+    }
+
+    .result{
+        padding: 10px;
+        .results{
+            #movie{
+                .result-title{
+                    padding: 10px;
+                    font-size: 150%;
+                    font-weight: bold;
+                    color: #393b44;
+                }
+            }
+        }
+    }
+
+    #movie-list{
+        color: #8d93ab;
+        padding-top: 10px;
+        .movie-container{
+            padding: 20px;
+            #movie-title{
+                color: #8d93ab;
+                .movie-name{
+                    font-size: larger;
+                    font-weight: bold;
+                    color: #393b44;
+                }
+
+            }
+            #movie-img{
+                .votes{
+                    color: #393b44; 
+                }
+            }
+            #myrating{
+                .movie-rating{
+                    color: #393b44;
+                }
+            }
+        }
+    }
+}

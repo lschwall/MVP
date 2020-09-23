@@ -25,18 +25,14 @@ module.exports = {
         }
       },
         {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          test: /\.s?css$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
        },
        {
-          test: /\.(png|j?g|svg|gif)?$/,
-          use: 'file-loader'
+         resolve: {
+           extensions: ['.js', '.jsx']
+         }
        }
     ]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx']
-  },
-
-
+  }
 };

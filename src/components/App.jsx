@@ -4,7 +4,6 @@ import Result from './Result';
 import MovieEntries from './MovieList';
 import axios from 'axios';
 
-
 class App extends React.Component{
     constructor(props){
         super(props)
@@ -99,7 +98,7 @@ axios.get from API
             .then(() => {
                 axios.get(`http://localhost:8080/movies`)
                     .then(results => this.setState({
-                        library : results.data
+                        library : results.data,
                     }))
             })
     }
@@ -115,20 +114,54 @@ axios.get from API
 
     render(){
         const { movie, library, } = this.state;
-        return(
-            <div className='container'>
-                <div id='title'>
-                    <h1>Welcome to <i>The Movie Drawer</i></h1>
+        if(Object.keys(movie).length){
+            return(
+                <div className='container'>
+                    <header className='titleContainer'>
+                        <div id='title'>
+                            The Movie Drawer
+                        </div>
+                    </header>
+                    <div id='search'><Search onSearch={this.onSearch} movieSearch={this.movieSearch} /></div>
+                    <div className='result'>
+                        <Result movie={movie} addMovie={this.addMovie}  />
+                    </div>
+                    <div className='liner'>
+                    <hr  style={{
+                        color: '#8d93ab',
+                        backgroundColor: '#8d93ab',
+                        height: .5,
+                        borderColor : '#8d93ab'
+                    }}/>
+                    </div>
+                    <div id="movie-list">
+                        <MovieEntries movies={library} deleteMovie={this.deleteMovie} onRating={this.onRating} submitRating={this.submitRating}/>
+                    </div>
                 </div>
-                <div id='search'><Search onSearch={this.onSearch} movieSearch={this.movieSearch} /></div>
-                <div>
-                    <Result movie={movie} addMovie={this.addMovie}  />
+            )
+        }else{
+            return(
+                <div className='container'>
+                    <header className='titleContainer'>
+                        <div id='title'>
+                            The Movie Drawer
+                        </div>
+                    </header>
+                    <div id='search'><Search onSearch={this.onSearch} movieSearch={this.movieSearch} /></div>
+                    <div className='liner'>
+                    <hr  style={{
+                        color: '#8d93ab',
+                        backgroundColor: '#8d93ab',
+                        height: .5,
+                        borderColor : '#8d93ab'
+                    }}/>
+                    </div>
+                    <div id="movie-list">
+                        <MovieEntries movies={library} deleteMovie={this.deleteMovie} onRating={this.onRating} submitRating={this.submitRating}/>
+                    </div>
                 </div>
-                <div id="movie-list">
-                    <MovieEntries movies={library} deleteMovie={this.deleteMovie} onRating={this.onRating} submitRating={this.submitRating}/>
-                </div>
-            </div>
-        )
+            )
+        }
     }
 }
 

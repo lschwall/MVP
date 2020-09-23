@@ -18,7 +18,6 @@ app.get('/movies', (req, res) => {
     Movie.find()
         //result is the result of the entire query
     .then(result => {
-        console.log('MOVIE FOUND!')
         res.status(200).send(result)
     })
     .catch(err => {
@@ -28,20 +27,26 @@ app.get('/movies', (req, res) => {
 
 app.post('/movies',(req, res) => {
     console.log(req.body.title)
-    new Movie(req.body).save()
-        .then((savedMovie) => {
-            res.status(200)
-            res.send(savedMovie)
-        })
-        .catch(() => {
-            res.status(404)
-            console.log('MOVIE ALREADY IN DRAWER')
-        })
+    console.log('poster',req.body.poster_path)
+    if(req.body.title === undefined){
+        res.status(500)
+        console.log('PLEASE USE SEARCH BUTTON')
+    }else{
+        new Movie(req.body).save()
+            .then((savedMovie) => {
+                res.status(200)
+                res.send(savedMovie)
+            })
+            .catch(() => {
+                res.status(404)
+                console.log('MOVIE ALREADY IN DRAWER')
+            })
+    }
    
 })
 
 app.delete('/movies', (req, res) => {
-    console.log(req.query, '==== QUERY')
+    // console.log(req.query)
     let {movieTitle} = req.query;
     Movie.deleteOne({title: movieTitle})
       .then( () => {
@@ -56,7 +61,7 @@ app.delete('/movies', (req, res) => {
   app.post('/updateMovie', (req, res) => {
     let { title, personal_rating } = req.body;
     console.log('BODY',req.body)
-    Movie.findOneAndUpdate({title: title}, {personal_rating: personal_rating})
+    Movie.updateOne({title: title}, {personal_rating: personal_rating})
         .then(updateResult => {
             console.log(updateResult)
             res.status(200).send('Rating Updated')
