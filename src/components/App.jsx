@@ -1,7 +1,8 @@
 import React from "react"; 
-import Search from './Search';
-import Result from './Result';
+import DrawerSearch from './DrawerSearch';
 import MovieEntries from './MovieList';
+import Result from './Result';
+import Search from './Search';
 import axios from 'axios';
 
 class App extends React.Component{
@@ -12,7 +13,8 @@ class App extends React.Component{
             searchText: null,
             movie: {},
             library: [],
-            rating: null
+            rating: null,
+            drawerSearch: null
         }
         this.onSearch = this.onSearch.bind(this);
         this.movieSearch = this.movieSearch.bind(this);
@@ -22,12 +24,6 @@ class App extends React.Component{
         this.submitRating = this.submitRating.bind(this);
     }
 
-/*
-
-axios.get from API
-    then
-        post that information to the endpoint in the server /movies
-*/
     componentDidMount(){
             axios.get('/movies')
                 .then(({ data }) => {
@@ -37,6 +33,15 @@ axios.get from API
                     })
                 })
             }
+
+
+/////////////////// MOVIE SEARCHES //////////////////////////////////////
+
+    onSearch(e){
+        this.setState({
+            searchText: e.target.value,
+        })
+    }
 
     movieSearch(){
         let { searchText } = this.state;
@@ -75,12 +80,6 @@ axios.get from API
             .catch(err => {console.log('COULD NOT POST', err)})
     }
 
-    onSearch(e){
-        
-        this.setState({
-            searchText: e.target.value
-        })
-    }
 
     onRating(event){
         this.setState({
@@ -112,6 +111,17 @@ axios.get from API
             })
     }
 
+////////////////////   END MOVIE SEARCH      ///////////////////////////
+
+
+
+
+/////////////////// Drawer Search //////////////////////////////////////
+
+
+
+////////////////////   END Drawer Search      /////////////////////////
+
     render(){
         const { movie, library, } = this.state;
         if(Object.keys(movie).length){
@@ -135,7 +145,10 @@ axios.get from API
                     }}/>
                     </div>
                     <div id="movie-list">
-                        <MovieEntries movies={library} deleteMovie={this.deleteMovie} onRating={this.onRating} submitRating={this.submitRating}/>
+                    <div className='nav' id='drawer_search'>
+                        <DrawerSearch />
+                    </div>
+                        <MovieEntries movies={library} deleteMovie={this.deleteMovie} onRating={this.onRating} submitRating={this.submitRating} onSearch={this.onSearch} />
                     </div>
                 </div>
             )

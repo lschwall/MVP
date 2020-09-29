@@ -26,7 +26,8 @@ app.get('/movies', (req, res) => {
 })
 
 app.post('/movies',(req, res) => {
-    console.log(req.body.title)
+    console.log('title', req.body.title)
+    console.log('body', req.body)
     console.log('poster',req.body.poster_path)
     if(req.body.title === undefined){
         res.status(500)
